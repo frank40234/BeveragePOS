@@ -1,0 +1,96 @@
+﻿namespace BeveragePOS.Views
+{
+    partial class MainView
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.pnlMenu = new System.Windows.Forms.Panel();
+            this.lbxOrder = new System.Windows.Forms.ListBox();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.btnCheckout = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // pnlMenu
+            // 
+            this.pnlMenu.AutoScroll = true;
+            this.pnlMenu.Location = new System.Drawing.Point(66, 42);
+            this.pnlMenu.Name = "pnlMenu";
+            this.pnlMenu.Size = new System.Drawing.Size(200, 100);
+            this.pnlMenu.TabIndex = 0;
+            this.pnlMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // lbxOrder
+            // 
+            this.lbxOrder.FormattingEnabled = true;
+            this.lbxOrder.ItemHeight = 21;
+            this.lbxOrder.Location = new System.Drawing.Point(615, 100);
+            this.lbxOrder.Name = "lbxOrder";
+            this.lbxOrder.Size = new System.Drawing.Size(120, 88);
+            this.lbxOrder.TabIndex = 1;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(344, 330);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(107, 21);
+            this.lblTotal.TabIndex = 2;
+            this.lblTotal.Text = "總計: $0.00";
+            // 
+            // btnCheckout
+            // 
+            this.btnCheckout.Location = new System.Drawing.Point(635, 353);
+            this.btnCheckout.Name = "btnCheckout";
+            this.btnCheckout.Size = new System.Drawing.Size(132, 98);
+            this.btnCheckout.TabIndex = 3;
+            this.btnCheckout.Text = "結帳";
+            this.btnCheckout.UseVisualStyleBackColor = true;
+            // 
+            // MainView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1417, 958);
+            this.Controls.Add(this.btnCheckout);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.lbxOrder);
+            this.Controls.Add(this.pnlMenu);
+            this.Name = "MainView";
+            this.Text = "MainView";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel pnlMenu;
+        private System.Windows.Forms.ListBox lbxOrder;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Button btnCheckout;
+    }
+}
