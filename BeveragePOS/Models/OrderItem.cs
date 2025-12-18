@@ -23,7 +23,7 @@ namespace BeveragePOS.Models
         /// <summary>
         /// 計算該訂單明細的總小計
         /// </summary>
-        public decimal Subtotal => Price * Quantity;
+        public decimal Subtotal => Price * Quantity;// 調用subtotal時執行Price * Quantity
         public override string ToString()
         {
             // 範例輸出: [1] 珍珠奶茶 @ $55.00 x 1 = $55.00
