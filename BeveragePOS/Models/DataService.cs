@@ -132,6 +132,6 @@ namespace BeveragePOS.Models
             }
                 return menuItems;
         }
-        // (未來：GetMenuItems(), AddOrder() 等方法將會加在這裡)
+        
     }
 }
