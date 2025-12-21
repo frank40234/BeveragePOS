@@ -16,21 +16,33 @@ namespace BeveragePOS.Models
         /// </summary>
         public void InitializeDatabase()
         {
-            bool needsCreation = !File.Exists(DatabaseName);
-
-            if (needsCreation)
+            // 1. 如果檔案不存在，建立它
+            if (!File.Exists(DatabaseName))
             {
-                // 如果不存在，則建立新的資料庫檔案
                 SQLiteConnection.CreateFile(DatabaseName);
             }
 
-            // 無論如何都執行資料表檢查和建立
+            // 2. 確保資料表存在
             CreateTable();
 
-            // 如果是新建立的資料庫，插入測試資料
-            if (needsCreation)
+            // 3. 檢查是否需要插入測試資料 (如果資料庫是空的)
+            if (IsTableEmpty())
             {
                 InsertSampleData();
+            }
+        }
+        // 新增一個輔助方法來檢查資料表是否為空
+        private bool IsTableEmpty()
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT COUNT(*) FROM MenuItem";
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    long count = (long)command.ExecuteScalar();
+                    return count == 0; // 如果數量為 0，回傳 true
+                }
             }
         }
         /// <summary>

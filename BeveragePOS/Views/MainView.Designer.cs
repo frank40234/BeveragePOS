@@ -39,7 +39,7 @@
             this.pnlMenu.AutoScroll = true;
             this.pnlMenu.Location = new System.Drawing.Point(66, 42);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 100);
+            this.pnlMenu.Size = new System.Drawing.Size(457, 863);
             this.pnlMenu.TabIndex = 0;
             this.pnlMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -47,15 +47,15 @@
             // 
             this.lbxOrder.FormattingEnabled = true;
             this.lbxOrder.ItemHeight = 21;
-            this.lbxOrder.Location = new System.Drawing.Point(615, 100);
+            this.lbxOrder.Location = new System.Drawing.Point(721, 73);
             this.lbxOrder.Name = "lbxOrder";
-            this.lbxOrder.Size = new System.Drawing.Size(120, 88);
+            this.lbxOrder.Size = new System.Drawing.Size(539, 130);
             this.lbxOrder.TabIndex = 1;
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(344, 330);
+            this.lblTotal.Location = new System.Drawing.Point(1153, 734);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(107, 21);
             this.lblTotal.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             // btnCheckout
             // 
-            this.btnCheckout.Location = new System.Drawing.Point(635, 353);
+            this.btnCheckout.Location = new System.Drawing.Point(948, 710);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(132, 98);
             this.btnCheckout.TabIndex = 3;

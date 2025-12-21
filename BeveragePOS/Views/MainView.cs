@@ -22,6 +22,7 @@ namespace BeveragePOS.Views
             _controller = new MainController();
             //設定表單仔入事件
             this.Load += new EventHandler(MainView_Load);
+            btnCheckout.Click += new EventHandler(btnCheckout_Click);
 
         }
 
@@ -102,6 +103,7 @@ namespace BeveragePOS.Views
         //結帳按鈕
         private void btnCheckout_Click(object sender, EventArgs e)
         {
+            
             if (_controller.GetTotal() == 0) return;
 
             MessageBox.Show($"結帳成功！共計 ${_controller.GetTotal():N0} 元");

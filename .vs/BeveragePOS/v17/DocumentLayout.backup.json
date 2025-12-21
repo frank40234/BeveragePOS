@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "D:\\Project\\BeveragePOS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|D:\\Project\\BeveragePOS\\beveragepos\\views\\mainview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|d:\\project\\beveragepos\\beveragepos\\views\\mainview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|solutionrelative:beveragepos\\views\\mainview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|d:\\project\\beveragepos\\beveragepos\\controllers\\maincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|D:\\Project\\BeveragePOS\\beveragepos\\controllers\\maincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|solutionrelative:beveragepos\\controllers\\maincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -23,6 +23,10 @@
       "RelativeMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|solutionrelative:beveragepos\\models\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|D:\\Project\\BeveragePOS\\beveragepos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|solutionrelative:beveragepos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|D:\\Project\\BeveragePOS\\beveragepos\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|solutionrelative:beveragepos\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -33,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|D:\\Project\\BeveragePOS\\beveragepos\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|solutionrelative:beveragepos\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|D:\\Project\\BeveragePOS\\beveragepos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA35ED1B-2007-4131-932B-F597393B9957}|BeveragePOS\\BeveragePOS.csproj|solutionrelative:beveragepos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -56,7 +56,7 @@
               "RelativeDocumentMoniker": "BeveragePOS\\Views\\MainView.Designer.cs",
               "ToolTip": "D:\\Project\\BeveragePOS\\BeveragePOS\\Views\\MainView.Designer.cs",
               "RelativeToolTip": "BeveragePOS\\Views\\MainView.Designer.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAzwBIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAnwF0AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T14:18:21.477Z",
               "EditorCaption": ""
@@ -69,7 +69,7 @@
               "RelativeDocumentMoniker": "BeveragePOS\\Controllers\\MainController.cs",
               "ToolTip": "D:\\Project\\BeveragePOS\\BeveragePOS\\Controllers\\MainController.cs",
               "RelativeToolTip": "BeveragePOS\\Controllers\\MainController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAywA8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAADMAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T13:45:21.04Z",
               "EditorCaption": ""
@@ -82,7 +82,7 @@
               "RelativeDocumentMoniker": "BeveragePOS\\Models\\DataService.cs",
               "ToolTip": "D:\\Project\\BeveragePOS\\BeveragePOS\\Models\\DataService.cs",
               "RelativeToolTip": "BeveragePOS\\Models\\DataService.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAiwFEAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAuwC4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T12:31:12.235Z",
               "EditorCaption": ""
@@ -93,9 +93,9 @@
               "Title": "MainView.cs",
               "DocumentMoniker": "D:\\Project\\BeveragePOS\\BeveragePOS\\Views\\MainView.cs",
               "RelativeDocumentMoniker": "BeveragePOS\\Views\\MainView.cs",
-              "ToolTip": "D:\\Project\\BeveragePOS\\BeveragePOS\\Views\\MainView.cs*",
-              "RelativeToolTip": "BeveragePOS\\Views\\MainView.cs*",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAkwGwAAAAYAAAAAAAAAA==",
+              "ToolTip": "D:\\Project\\BeveragePOS\\BeveragePOS\\Views\\MainView.cs",
+              "RelativeToolTip": "BeveragePOS\\Views\\MainView.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAtwBMAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-14T15:35:58.35Z",
               "EditorCaption": ""
@@ -106,15 +106,15 @@
               "Title": "MainView.cs [Design]",
               "DocumentMoniker": "D:\\Project\\BeveragePOS\\BeveragePOS\\Views\\MainView.cs",
               "RelativeDocumentMoniker": "BeveragePOS\\Views\\MainView.cs",
-              "ToolTip": "D:\\Project\\BeveragePOS\\BeveragePOS\\Views\\MainView.cs [Design]*",
-              "RelativeToolTip": "BeveragePOS\\Views\\MainView.cs [Design]*",
+              "ToolTip": "D:\\Project\\BeveragePOS\\BeveragePOS\\Views\\MainView.cs [Design]",
+              "RelativeToolTip": "BeveragePOS\\Views\\MainView.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-14T15:35:02.111Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Project\\BeveragePOS\\BeveragePOS\\Program.cs",
               "RelativeDocumentMoniker": "BeveragePOS\\Program.cs",
@@ -122,11 +122,12 @@
               "RelativeToolTip": "BeveragePOS\\Program.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAiwB4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-14T15:07:21.449Z"
+              "WhenOpened": "2025-12-14T15:07:21.449Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "D:\\Project\\BeveragePOS\\BeveragePOS\\Models\\OrderItem.cs",
               "RelativeDocumentMoniker": "BeveragePOS\\Models\\OrderItem.cs",
@@ -138,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Order.cs",
               "DocumentMoniker": "D:\\Project\\BeveragePOS\\BeveragePOS\\Models\\Order.cs",
               "RelativeDocumentMoniker": "BeveragePOS\\Models\\Order.cs",
@@ -150,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MenuItem.cs",
               "DocumentMoniker": "D:\\Project\\BeveragePOS\\BeveragePOS\\Models\\MenuItem.cs",
               "RelativeDocumentMoniker": "BeveragePOS\\Models\\MenuItem.cs",
