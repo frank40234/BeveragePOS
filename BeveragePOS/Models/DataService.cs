@@ -88,6 +88,7 @@ namespace BeveragePOS.Models
                             command.Parameters.AddWithValue("@category",item.Category);
                             command.Parameters.AddWithValue("@isAvailable", item.IsAvailable);
 
+                            command.ExecuteNonQuery();
                         }
 
                     }

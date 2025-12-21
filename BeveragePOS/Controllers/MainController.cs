@@ -14,6 +14,7 @@ namespace BeveragePOS.Controllers
     {
         private readonly DataService _dataService;
         private List<OrderItem> _currentOrderItems;
+        private List<OrderItem> _currentOrder = new List<OrderItem>();
 
         // 建構函式：Controller 初始化時，建立 DataService 實例
         public MainController()
@@ -84,6 +85,8 @@ namespace BeveragePOS.Controllers
             _currentOrderItems.Clear();
         }
 
-
+        public List<OrderItem> GetCurrentOrder() => _currentOrder;
+        public decimal GetTotal() => _currentOrder.Sum(x => x.Subtotal);
+        public void ClearOrder() => _currentOrder.Clear();
     }
 }

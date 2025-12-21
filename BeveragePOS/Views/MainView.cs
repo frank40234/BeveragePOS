@@ -73,16 +73,26 @@ namespace BeveragePOS.Views
         // 菜單按鈕點擊事件處理函式 (下一步實作)
         private void MenuItem_Click(object sender, EventArgs e)
         {
-            // (Placeholder for adding item to order)
-            Button clickedButton = (Button)sender;
-            // 從 Tag 中取出我們儲存的 Model 物件 (修正命名衝突)
-            BeveragePOS.Models.MenuItem selectedItem =
-                (BeveragePOS.Models.MenuItem)clickedButton.Tag;
-            //View 呼叫 Controller 執行業務邏輯
-            _controller.AddToOrder(selectedItem);
-            //更新介面顯示
-            UpdateOrderDisplay();
+            // 1. 取得被點擊的按鈕與其攜帶的資料
+            var btn = (Button)sender;
+            var item = (BeveragePOS.Models.MenuItem)btn.Tag;
 
+            // 2. 透過 Controller 處理點餐
+            _controller.AddToOrder(item);
+
+            // 3. 更新介面
+            RefreshUI();
+
+        }
+
+        private void RefreshUI()
+        {
+            // 更新 ListBox 清單 (重新繫結資料)
+            lbxOrder.DataSource = null;
+            lbxOrder.DataSource = _controller.GetCurrentOrder();
+
+            // 更新總計標籤
+            lblTotal.Text = $"總計: ${_controller.GetTotal():N0}";
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -92,16 +102,11 @@ namespace BeveragePOS.Views
         //結帳按鈕
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            if(_controller.GetOrderTotal() > 0)
-            {
-                //呼叫Controller 處理結帳邏輯
-                _controller.Checkout();
+            if (_controller.GetTotal() == 0) return;
 
-                MessageBox.Show("結帳成功","交易完成",MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //更新介面顯示 (清空)
-                UpdateOrderDisplay();
-            }
+            MessageBox.Show($"結帳成功！共計 ${_controller.GetTotal():N0} 元");
+            _controller.ClearOrder();
+            RefreshUI();
         }
         /// <summary>
         /// 更新 ListBox 和總金額 Label 的顯示
