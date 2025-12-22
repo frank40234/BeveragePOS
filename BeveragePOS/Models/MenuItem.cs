@@ -21,6 +21,10 @@ namespace BeveragePOS.Models
         public string Category { get; set; }
         // 5. 庫存狀態或是可販售
         public bool IsAvailable { get; set; } = true;
+        ////甜度
+        //public string suger { get; set; }
+        ////冰塊
+        //public string ice { get; set; }
 
     }
 }

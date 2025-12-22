@@ -66,5 +66,13 @@ namespace BeveragePOS.Controllers
             return _currentOrderItems.Sum(oi => oi.Subtotal);
         }
 
+        public void Checkout()
+        {
+            if (_currentOrderItems.Count == 0) return;
+            _dataService.SaveOrder(GetTotal(), _currentOrderItems);
+            ClearOrder();
+        }
+
+        public string GetDailyReport() => _dataService.GetDailyReport();
     }
 }

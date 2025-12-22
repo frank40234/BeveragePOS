@@ -16,6 +16,7 @@ namespace BeveragePOS.Models
         /// </summary>
         public void InitializeDatabase()
         {
+            
             // 1. 如果檔案不存在，建立它
             if (!File.Exists(DatabaseName))
             {
@@ -62,10 +63,33 @@ namespace BeveragePOS.Models
                         Category TEXT,
                         IsAvailable INTEGER NOT NULL -- SQLite 用 INTEGER (0=False, 1=True)
                     );";
-                using (var command = new SQLiteCommand(createMenuItemTableSql, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
+                // 2. 新增 Orders 表 (訂單主檔)
+                // 記錄訂單日期 (OrderDate) 和總金額 (TotalAmount)
+                string createOrderTableSql = @"
+                CREATE TABLE IF NOT EXISTS Orders (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    OrderDate DATETIME NOT NULL,
+                    TotalAmount REAL NOT NULL
+                );";
+
+                // 3. 新增 OrderItems 表 (訂單明細)
+                // 記錄每筆訂單裡面的飲料細節
+                // 注意：我們這裡會「快照 (Snapshot)」存入 Name 和 Price，
+                // 防止未來菜單改名或漲價後，舊的訂單紀錄也跟著變動。
+                string createOrderItemTableSql = @"
+                CREATE TABLE IF NOT EXISTS OrderItems (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    OrderId INTEGER NOT NULL,
+                    MenuItemName TEXT NOT NULL,
+                    Price REAL NOT NULL,
+                    Quantity INTEGER NOT NULL,
+                    Subtotal REAL NOT NULL,
+                    FOREIGN KEY(OrderId) REFERENCES Orders(Id)
+                );";
+
+                using (var command = new SQLiteCommand(createMenuItemTableSql, connection)) { command.ExecuteNonQuery(); }
+                using (var command = new SQLiteCommand(createOrderTableSql, connection)) { command.ExecuteNonQuery(); }
+                using (var command = new SQLiteCommand(createOrderItemTableSql, connection)) { command.ExecuteNonQuery(); }
             }
         }
         /// <summary>
@@ -145,6 +169,66 @@ namespace BeveragePOS.Models
             }
                 return menuItems;
         }
-        
+        public void SaveOrder(decimal total,List<OrderItem> items)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // 1. 插入訂單主檔並取得自動生成的 ID
+                        string insertOrderSql = "INSERT INTO Orders (OrderDate, TotalAmount) VALUES (DateTime('now','localtime'), @total); SELECT last_insert_rowid();";
+                        long orderId;
+                        using (var cmd = new SQLiteCommand(insertOrderSql, connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@total", total);
+                            orderId = (long)cmd.ExecuteScalar();
+                        }
+
+                        // 2. 插入該訂單的所有明細
+                        string insertItemSql = "INSERT INTO OrderItems (OrderId, MenuItemName, Price, Quantity) VALUES (@orderId, @name, @price, @qty)";
+                        foreach (var item in items)
+                        {
+                            using (var cmd = new SQLiteCommand(insertItemSql, connection, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@orderId", orderId);
+                                cmd.Parameters.AddWithValue("@name", item.Name);
+                                cmd.Parameters.AddWithValue("@price", item.Price);
+                                cmd.Parameters.AddWithValue("@qty", item.Quantity);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        transaction.Commit();
+                    }
+                    catch { transaction.Rollback(); throw; }
+                }
+            }
+        }
+        // 取得當日下班結帳資訊 (日結)
+        public string GetDailyReport()
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                // 查詢當天的訂單數與總金額
+                string sql = "SELECT COUNT(*), SUM(TotalAmount) FROM Orders WHERE date(OrderDate) = date('now','localtime')";
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int count = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+                            decimal sum = reader.IsDBNull(1) ? 0 : reader.GetDecimal(1);
+                            return $"今日日期: {DateTime.Now:yyyy-MM-dd}\n總訂單數: {count} 筆\n總營業額: ${sum:N0}";
+                        }
+                    }
+                }
+            }
+            return "無資料";
+        }
+
     }
 }

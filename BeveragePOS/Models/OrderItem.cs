@@ -19,6 +19,10 @@ namespace BeveragePOS.Models
         public decimal Price { get; set; }
         //點選數量
         public int Quantity { get; set; } = 1;
+        ////甜度
+        //public string suger {  get; set; }
+        ////冰塊
+        //public string ice { get; set; }
 
         /// <summary>
         /// 計算該訂單明細的總小計

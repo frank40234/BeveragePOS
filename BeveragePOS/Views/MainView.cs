@@ -23,6 +23,7 @@ namespace BeveragePOS.Views
             //設定表單仔入事件
             this.Load += new EventHandler(MainView_Load);
             btnCheckout.Click += new EventHandler(btnCheckout_Click);
+            btnDailyReport.Click += new EventHandler(btnDailyReport_Click);
 
         }
 
@@ -103,12 +104,25 @@ namespace BeveragePOS.Views
         //結帳按鈕
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            
+
             if (_controller.GetTotal() == 0) return;
 
-            MessageBox.Show($"結帳成功！共計 ${_controller.GetTotal():N0} 元");
-            _controller.ClearOrder();
-            RefreshUI();
+            try
+            {
+                _controller.Checkout(); // 存入資料庫
+                MessageBox.Show("訂單已存入資料庫，結帳成功！");
+                RefreshUI();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"儲存失敗: {ex.Message}");
+            }
+        }
+        // 新增：處理下班結帳 (日結報告)
+        private void btnDailyReport_Click(object sender, EventArgs e)
+        {
+            string report = _controller.GetDailyReport();
+            MessageBox.Show(report, "今日下班日結報告");
         }
         /// <summary>
         /// 更新 ListBox 和總金額 Label 的顯示
@@ -124,5 +138,9 @@ namespace BeveragePOS.Views
             lblTotal.Text = $"總計: ${total:N2}";
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,6 +32,7 @@
             this.lbxOrder = new System.Windows.Forms.ListBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnCheckout = new System.Windows.Forms.Button();
+            this.btnDailyReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -70,11 +71,22 @@
             this.btnCheckout.Text = "結帳";
             this.btnCheckout.UseVisualStyleBackColor = true;
             // 
+            // btnDailyReport
+            // 
+            this.btnDailyReport.Location = new System.Drawing.Point(579, 858);
+            this.btnDailyReport.Name = "btnDailyReport";
+            this.btnDailyReport.Size = new System.Drawing.Size(157, 77);
+            this.btnDailyReport.TabIndex = 4;
+            this.btnDailyReport.Text = "下班結算";
+            this.btnDailyReport.UseVisualStyleBackColor = true;
+            this.btnDailyReport.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1417, 958);
+            this.Controls.Add(this.btnDailyReport);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lbxOrder);
@@ -92,5 +104,6 @@
         private System.Windows.Forms.ListBox lbxOrder;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnCheckout;
+        private System.Windows.Forms.Button btnDailyReport;
     }
 }
