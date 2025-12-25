@@ -33,6 +33,7 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.btnDailyReport = new System.Windows.Forms.Button();
+            this.btnHistory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -81,11 +82,22 @@
             this.btnDailyReport.UseVisualStyleBackColor = true;
             this.btnDailyReport.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnHistory
+            // 
+            this.btnHistory.Location = new System.Drawing.Point(765, 858);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(141, 77);
+            this.btnHistory.TabIndex = 5;
+            this.btnHistory.Text = "歷史資料";
+            this.btnHistory.UseVisualStyleBackColor = true;
+            this.btnHistory.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1417, 958);
+            this.Controls.Add(this.btnHistory);
             this.Controls.Add(this.btnDailyReport);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.lblTotal);
@@ -105,5 +117,6 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Button btnDailyReport;
+        private System.Windows.Forms.Button btnHistory;
     }
 }

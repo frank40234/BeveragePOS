@@ -72,6 +72,15 @@ namespace BeveragePOS.Controllers
             _dataService.SaveOrder(GetTotal(), _currentOrderItems);
             ClearOrder();
         }
+        public List<Order> GetOrderHistory()
+        {
+            return _dataService.GetOrderHistory();
+        }
+
+        public List<OrderItem> GetOrderDetails(int orderId)
+        {
+            return _dataService.GetOrderDetails(orderId);
+        }
 
         public string GetDailyReport() => _dataService.GetDailyReport();
     }

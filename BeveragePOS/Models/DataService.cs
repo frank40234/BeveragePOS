@@ -169,6 +169,73 @@ namespace BeveragePOS.Models
             }
                 return menuItems;
         }
+        /// <summary>
+        /// 取得所有訂單紀錄
+        /// </summary>
+        /// <returns>order</returns>
+        public List<Order> GetOrderHistory()
+        {
+            var list =new List<Order>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT Id, OrderDate, TotalAmount FROM Orders ORDER BY Id DESC";
+                using (var command = new SQLiteCommand(sql, connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    //持續讀取資料直到沒有資料會回傳false結束迴圈
+                    while (reader.Read())
+                    {
+                        list.Add(new Order
+                        {
+                            Id = reader.GetInt32(0),//轉為int
+                            OrderDate = reader.GetDateTime(1),//轉為Datatime
+                            TotalAmount = reader.GetDecimal(2)//轉為decimal
+                        });
+                    }
+                }
+                
+            }
+            return list;
+        }
+        /// <summary>
+        /// 根據訂單ID 取得訂單的飲料明細
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public List<OrderItem> GetOrderDetails(int orderId)
+        {
+            var list = new List<OrderItem>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT MenuItemName, Price, Quantity, Subtotal FROM OrderItems WHERE OrderId = @id";
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@id", orderId);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new OrderItem
+                            {
+                                Name = reader.GetString(0), // 對應 MenuItemName
+                                Price = reader.GetDecimal(1),
+                                Quantity = reader.GetInt32(2),
+
+                                // Subtotal 可以直接讀取，或是由 Property 自動計算，這裡示範直接讀取
+                            });
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+        /// <summary>
+        /// 儲存當日點餐清單
+        /// </summary>
+        /// <param name="total"></param>
+        /// <param name="items"></param>
         public void SaveOrder(decimal total,List<OrderItem> items)
         {
             using (var connection = new SQLiteConnection(connectionString))
@@ -222,8 +289,15 @@ namespace BeveragePOS.Models
                         {
                             int count = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                             decimal sum = reader.IsDBNull(1) ? 0 : reader.GetDecimal(1);
+
+                            if (count == 0)
+                            {
+                                return "無資料";
+                            }
+
                             return $"今日日期: {DateTime.Now:yyyy-MM-dd}\n總訂單數: {count} 筆\n總營業額: ${sum:N0}";
                         }
+                        
                     }
                 }
             }

@@ -24,6 +24,7 @@ namespace BeveragePOS.Views
             this.Load += new EventHandler(MainView_Load);
             btnCheckout.Click += new EventHandler(btnCheckout_Click);
             btnDailyReport.Click += new EventHandler(btnDailyReport_Click);
+            btnHistory.Click += new EventHandler(btnHistory_Click);
 
         }
 
@@ -137,8 +138,24 @@ namespace BeveragePOS.Views
             decimal total = _controller.GetOrderTotal();
             lblTotal.Text = $"總計: ${total:N2}";
         }
+        /// <summary>
+        /// 歷史資料
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            // 建立並顯示歷史視窗
+            var historyForm = new HistoryForm(); // 假設你的 namespace 是 BeveragePOS.Views
+            historyForm.ShowDialog(); // ShowDialog 代表「對話框模式」，關閉它才能回到主畫面
+        }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
 
         }
