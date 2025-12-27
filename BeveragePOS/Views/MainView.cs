@@ -124,6 +124,8 @@ namespace BeveragePOS.Views
         {
             string report = _controller.GetDailyReport();
             MessageBox.Show(report, "今日下班日結報告");
+            this.Close();
+
         }
         /// <summary>
         /// 更新 ListBox 和總金額 Label 的顯示

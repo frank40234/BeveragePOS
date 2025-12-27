@@ -232,7 +232,7 @@ namespace BeveragePOS.Models
             return list;
         }
         /// <summary>
-        /// 儲存當日點餐清單
+        /// 儲存點餐訊息
         /// </summary>
         /// <param name="total"></param>
         /// <param name="items"></param>
@@ -255,7 +255,7 @@ namespace BeveragePOS.Models
                         }
 
                         // 2. 插入該訂單的所有明細
-                        string insertItemSql = "INSERT INTO OrderItems (OrderId, MenuItemName, Price, Quantity) VALUES (@orderId, @name, @price, @qty)";
+                        string insertItemSql = "INSERT INTO OrderItems (OrderId, MenuItemName, Price, Quantity,Subtotal) VALUES (@orderId, @name, @price, @qty,@stal)";
                         foreach (var item in items)
                         {
                             using (var cmd = new SQLiteCommand(insertItemSql, connection, transaction))
@@ -264,6 +264,8 @@ namespace BeveragePOS.Models
                                 cmd.Parameters.AddWithValue("@name", item.Name);
                                 cmd.Parameters.AddWithValue("@price", item.Price);
                                 cmd.Parameters.AddWithValue("@qty", item.Quantity);
+                                cmd.Parameters.AddWithValue("@stal", total);
+
                                 cmd.ExecuteNonQuery();
                             }
                         }

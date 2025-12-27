@@ -30,8 +30,9 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvDetails = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.closeBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -48,6 +49,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.closeBtn);
             this.splitContainer1.Panel1.Controls.Add(this.dgvOrders);
             // 
             // splitContainer1.Panel2
@@ -68,15 +70,6 @@
             this.dgvOrders.Size = new System.Drawing.Size(600, 564);
             this.dgvOrders.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "訂單明細";
-            // 
             // dgvDetails
             // 
             this.dgvDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -86,6 +79,24 @@
             this.dgvDetails.RowTemplate.Height = 35;
             this.dgvDetails.Size = new System.Drawing.Size(1200, 858);
             this.dgvDetails.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "訂單明細";
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Location = new System.Drawing.Point(426, 752);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(139, 60);
+            this.closeBtn.TabIndex = 1;
+            this.closeBtn.Text = "關閉";
+            this.closeBtn.UseVisualStyleBackColor = true;
             // 
             // HistoryForm
             // 
@@ -112,5 +123,6 @@
         private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.DataGridView dgvDetails;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button closeBtn;
     }
 }

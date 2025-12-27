@@ -28,6 +28,7 @@ namespace BeveragePOS.Views
             // 設定 DataGridView 的屬性，讓畫面好看一點
             SetupDataGridView(dgvOrders);
             SetupDataGridView(dgvDetails);
+            closeBtn.Click += (s, e) => this.Close();
         }
 
         private void SetupDataGridView(DataGridView dgv)
