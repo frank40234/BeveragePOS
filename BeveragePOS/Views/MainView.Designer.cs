@@ -34,6 +34,7 @@
             this.btnCheckout = new System.Windows.Forms.Button();
             this.btnDailyReport = new System.Windows.Forms.Button();
             this.btnHistory = new System.Windows.Forms.Button();
+            this.btnAddItem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -92,11 +93,22 @@
             this.btnHistory.UseVisualStyleBackColor = true;
             this.btnHistory.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Location = new System.Drawing.Point(948, 858);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(132, 77);
+            this.btnAddItem.TabIndex = 6;
+            this.btnAddItem.Text = "新增商品";
+            this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1417, 958);
+            this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.btnHistory);
             this.Controls.Add(this.btnDailyReport);
             this.Controls.Add(this.btnCheckout);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Button btnDailyReport;
         private System.Windows.Forms.Button btnHistory;
+        private System.Windows.Forms.Button btnAddItem;
     }
 }

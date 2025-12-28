@@ -161,5 +161,19 @@ namespace BeveragePOS.Views
         {
 
         }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            // 建立新增視窗
+            var itemForm = new ItemForm();
+
+            // 使用 ShowDialog 顯示，並檢查回傳結果
+            // 如果使用者按下「儲存」並成功 (DialogResult.OK)，我們才刷新介面
+            if (itemForm.ShowDialog() == DialogResult.OK)
+            {
+                // 重新讀取資料庫並產生按鈕
+                LoadMenuButtons();
+            }
+        }
     }
 }

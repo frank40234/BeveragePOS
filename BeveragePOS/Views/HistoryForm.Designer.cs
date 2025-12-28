@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.closeBtn = new System.Windows.Forms.Button();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.dgvDetails = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.closeBtn = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -49,6 +50,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnDelete);
             this.splitContainer1.Panel1.Controls.Add(this.closeBtn);
             this.splitContainer1.Panel1.Controls.Add(this.dgvOrders);
             // 
@@ -59,6 +61,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(1820, 885);
             this.splitContainer1.SplitterDistance = 606;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Location = new System.Drawing.Point(426, 752);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(139, 60);
+            this.closeBtn.TabIndex = 1;
+            this.closeBtn.Text = "關閉";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // dgvOrders
             // 
@@ -89,14 +101,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "訂單明細";
             // 
-            // closeBtn
+            // btnDelete
             // 
-            this.closeBtn.Location = new System.Drawing.Point(426, 752);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(139, 60);
-            this.closeBtn.TabIndex = 1;
-            this.closeBtn.Text = "關閉";
-            this.closeBtn.UseVisualStyleBackColor = true;
+            this.btnDelete.BackColor = System.Drawing.Color.Salmon;
+            this.btnDelete.Location = new System.Drawing.Point(76, 752);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(168, 60);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "刪除選取訂單";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // HistoryForm
             // 
@@ -124,5 +138,6 @@
         private System.Windows.Forms.DataGridView dgvDetails;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button closeBtn;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

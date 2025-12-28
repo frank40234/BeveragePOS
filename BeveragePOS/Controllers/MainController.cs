@@ -45,6 +45,11 @@ namespace BeveragePOS.Controllers
                 });
             }
         }
+        // 修正：從 _currentOrderItems 中刪除項目
+        public void DeleteOrder(int orderId)
+        {
+            _dataService.DeleteOrder(orderId);
+        }
 
         // 修正：統一回傳 _currentOrderItems
         public List<OrderItem> GetCurrentOrder() => _currentOrderItems;
@@ -80,6 +85,27 @@ namespace BeveragePOS.Controllers
         public List<OrderItem> GetOrderDetails(int orderId)
         {
             return _dataService.GetOrderDetails(orderId);
+        }
+
+        // [MainController.cs]
+
+        public void AddNewProduct(string name, decimal price, string category)
+        {
+            // 簡單的資料驗證
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("飲料名稱不能為空");
+            if (price < 0)
+                throw new ArgumentException("價格不能為負數");
+
+            var newItem = new MenuItem
+            {
+                Name = name,
+                Price = price,
+                Category = category,
+                IsAvailable = true // 預設上架
+            };
+
+            _dataService.AddMenuItem(newItem);
         }
 
         public string GetDailyReport() => _dataService.GetDailyReport();

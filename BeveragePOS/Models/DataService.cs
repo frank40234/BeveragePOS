@@ -133,6 +133,31 @@ namespace BeveragePOS.Models
             }
         }
         /// <summary>
+        /// 新增一個菜單項目
+        /// </summary>
+        public void AddMenuItem(MenuItem item)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = @"
+                    INSERT INTO MenuItem (Name, Price, Category, IsAvailable) 
+                    VALUES (@name, @price, @category, @isAvailable)";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@name", item.Name);
+                    command.Parameters.AddWithValue("@price", item.Price);
+                    // 如果分類沒填，預設為 "其他"
+                    command.Parameters.AddWithValue("@category", string.IsNullOrEmpty(item.Category) ? "其他" : item.Category);
+                    // 新增的商品預設都是上架狀態 (true)
+                    command.Parameters.AddWithValue("@isAvailable", item.IsAvailable ? 1 : 0);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        /// <summary>
         /// 從 menuItem 資料表讀取所有菜單項目
         /// </summary>
         /// <returns></returns>
@@ -304,6 +329,53 @@ namespace BeveragePOS.Models
                 }
             }
             return "無資料";
+        }
+
+        /// <summary>
+        /// 刪除指定訂單及其所有明細
+        /// </summary>
+        public void DeleteOrder(int orderId)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                // 使用事務，確保「明細」和「主檔」都一起被刪除
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // 1. 先刪除該訂單的「明細」 (OrderItems)
+                        // 邏輯：如果不先刪明細，有些嚴格的資料庫設定(Foreign Key)會禁止你刪除主檔
+                        string deleteItemsSql = "DELETE FROM OrderItems WHERE OrderId = @id";
+                        using (var cmd = new SQLiteCommand(deleteItemsSql, connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@id", orderId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // 2. 再刪除「訂單主檔」 (Orders)
+                        string deleteOrderSql = "DELETE FROM Orders WHERE Id = @id";
+                        using (var cmd = new SQLiteCommand(deleteOrderSql, connection, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@id", orderId);
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            // 檢查是否真的有刪除到資料 (防止刪除不存在的 ID)
+                            if (rowsAffected == 0)
+                            {
+                                throw new Exception("找不到該筆訂單，刪除失敗。");
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw; // 將錯誤往上拋，讓 UI 層顯示錯誤訊息
+                    }
+                }
+            }
         }
 
     }
