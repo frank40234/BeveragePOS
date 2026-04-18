@@ -70,11 +70,16 @@ namespace BeveragePOS.Views
                 MessageBox.Show("請先選擇一筆要刪除的訂單！");
                 return;
             }
-
             // 2. 取得選取的訂單 ID
             // 這裡我們將選取的物件轉型回我們定義的 Order 類別
             var selectedOrder = (Order)dgvOrders.SelectedRows[0].DataBoundItem;
             int orderId = selectedOrder.Id;
+            DateTime orderDate = selectedOrder.OrderDate;
+            if (orderDate<DateTime.Today)
+            {
+                MessageBox.Show("只能刪除當天訂單");
+                return;
+            }
 
             // 3. 防呆確認 (非常重要！)
             var result = MessageBox.Show(
@@ -85,6 +90,7 @@ namespace BeveragePOS.Views
 
             if (result == DialogResult.Yes)
             {
+
                 try
                 {
                     // 4. 呼叫 Controller 執行刪除
